@@ -1,60 +1,127 @@
-# Project Overview
-Implement a binary classification model to determine gender (Male/Female) from facial images using deep learning techniques.
+# Face Gender Classification Project
 
-## Dataset Details
+This project implements a face gender classification system using Transfer Learning with MobileNetV2 architecture. The model is designed to classify facial images into binary gender categories.
 
-### Training Dataset
-- Number of Images: 12,196 (70% of total data)
-- Image Dimensions: 224 x 224 x 3 (RGB)
+## Project Overview
 
-### Test Dataset
-- Number of Images: 5,227 (30% of total data)
-- Image Dimensions: 224 x 224 x 3 (RGB)
+This project utilizes deep learning techniques to perform gender classification on facial images. It leverages the MobileNetV2 architecture pre-trained on ImageNet and implements transfer learning for optimal performance.
 
-## Implementation Requirements
+## Technologies Used
 
-The project requires experimenting with various model architectures and hyperparameters:
+- Python
+- TensorFlow/Keras
+- MobileNetV2 (Pre-trained model)
+- Pandas
+- NumPy
+- Matplotlib
 
-### Model Architecture Variations
-1. **Fully Connected (FC) Layers**
-   - Experiment with different numbers of hidden layers
-   - Vary the number of neurons in hidden layers
+## Model Architecture
 
-2. **Optimization Parameters**
-   - Test different optimizers available in Keras
-   - Experiment with various loss functions
+The model architecture consists of:
+1. Base Model: MobileNetV2 (pre-trained on ImageNet)
+2. Custom Classification Head:
+   - Global Average Pooling
+   - Dropout Layer (0.5)
+   - Binary Classification Output
 
-3. **Model Configuration**
-   - Try different activation functions
-   - Adjust the number of training epochs
+### Key Features
 
-## Experimentation Matrix
+- Transfer Learning implementation using MobileNetV2
+- Fine-tuning of the last 30 layers
+- Data augmentation using ImageDataGenerator
+- Validation split of 20%
+- Batch processing with size of 32
+- Image preprocessing to 224x224 pixels
 
-Create experiments varying the following parameters:
-1. Hidden Layers: [2, 3, 4] layers
-2. Neurons per layer: [128, 256, 512]
-3. Optimizers:
-   - Adam
-   - RMSprop
-   - SGD
-4. Loss Functions:
-   - Binary Crossentropy
-   - Hinge Loss
-5. Activation Functions:
-   - ReLU
-   - LeakyReLU
-   - ELU
+## Data Processing
 
-## Expected Deliverables
+The project includes:
+- Image rescaling (1/255)
+- Validation split (20%)
+- Batch processing
+- Dynamic image loading using data generators
 
-1. Implemented model with the best performing configuration
-2. Comparative analysis of different model configurations
-3. Performance metrics on test dataset
-4. Training and validation curves
-5. Confusion matrix for the best model
+## Model Training Configuration
 
-## Success Metrics
-- Model accuracy on test dataset
-- F1-score
-- ROC-AUC curve
-- Confusion matrix analysis
+```python
+Image Size: (224, 224)
+Batch Size: 32
+Base Model: MobileNetV2
+Training Strategy: Fine-tuning last 30 layers
+```
+
+## Dataset Structure
+
+The project expects the following data organization:
+```
+/content/
+├── images/
+│   └── [image files]
+├── train.csv
+├── test.csv
+└── sample_submission.csv
+```
+
+## Setup and Installation
+
+1. Clone the repository
+2. Install required dependencies
+3. Prepare your dataset in the required format
+4. Run the training script
+
+## Requirements
+
+- TensorFlow
+- Keras
+- Pandas
+- NumPy
+- Matplotlib
+
+## Usage
+
+1. Prepare your image dataset
+2. Update the data paths in the script
+3. Run the training script
+4. Use the trained model for predictions
+
+## Future Improvements
+
+- Implement additional data augmentation techniques
+- Add cross-validation
+- Experiment with different architectures
+- Add model evaluation metrics visualization
+
+## Author
+
+**Depak Singh Manola** ([@manola1109](https://github.com/manola1109))
+
+Created: 2025-05-29 20:17:08 UTC
+
+## License
+
+MIT License
+
+Copyright (c) 2025 Depak Singh Manola
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Acknowledgments
+
+- MobileNetV2 architecture from TensorFlow/Keras
+- ImageNet for pre-trained weights
